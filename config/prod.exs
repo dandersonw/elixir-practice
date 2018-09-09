@@ -10,9 +10,14 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :practice, PracticeWeb.Endpoint,
-  http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  server: true,
+  http: [:inet6, port: {:system, "PORT"}],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  root: ".",
+  version: Application.spec(:phoenix_distillery, :vsn)
+  url: [host: "practice.ironbeard.com", port: 80],
+
+# TODO: Correct the above URL for deployment.
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -68,4 +73,16 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
-import_config "prod.secret.exs"
+#import_config "prod.secret.exs"
+
+File.mkdir_p!(Path.expand("~/.config"))
+path = Path.expand("~/.config/practice.secret")
+unless File.exists?(path) do
+  secret = Base.encode16(:crypto.strong_rand_bytes(32))
+  File.write!(path, secret)
+end
+secret = File.read!(path)
+
+config :draw, PracticeWeb.Endpoint,
+  secret_key_base: secret
+
