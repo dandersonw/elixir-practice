@@ -14,8 +14,8 @@ config :practice, PracticeWeb.Endpoint,
   http: [:inet6, port: {:system, "PORT"}],
   cache_static_manifest: "priv/static/cache_manifest.json",
   root: ".",
-  version: Application.spec(:phoenix_distillery, :vsn)
-  url: [host: "practice.ironbeard.com", port: 80],
+  version: Application.spec(:phoenix_distillery, :vsn),
+  url: [host: "practice2.ironbeard.com", port: 80]
 
 # TODO: Correct the above URL for deployment.
 

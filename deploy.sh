@@ -17,9 +17,9 @@ echo "Generating release..."
 mix release
 
 #echo "Stopping old copy of app, if any..."
-#_build/prod/rel/draw/bin/practice stop || true
+#_build/prod/rel/practice/bin/practice stop || true
 
 echo "Starting app..."
 
-_build/prod/rel/draw/bin/practice foreground
+_build/prod/rel/practice/bin/practice foreground
 
