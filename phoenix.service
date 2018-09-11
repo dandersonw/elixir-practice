@@ -1,0 +1,14 @@
+# Skeleton taken from devdungeon.com
+[Unit]
+Description=Phoenix Webapp
+After=network.target
+
+[Service]
+Type=simple
+User=phoenix
+WorkingDirectory=/home/phoenix/elixir-practice
+ExecStart=/home/phoenix/elixir-practice/start.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

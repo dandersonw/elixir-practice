@@ -30,9 +30,10 @@
   <div class="column">
     <h2>Palindrome?</h2>
 
-    <p>TODO: Add a form here that checks if a string is a palindrome.</p>
-    <p>INPUT BOX</p>
-    <p>SUBMIT BUTTON</p>
+    <%= form_for @conn, "/palindrome", fn f -> %>
+      <p>Enter string: <%= text_input f, :x %></p>
+      <p><%= submit "Palindrome?" %></p>
+    <% end %>
   </div>
 </div>
 

@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="column">
+    <p><%= link "← go back", to: "/" %></p>
+    <h2>Palindrome Results</h2>
+
+    <p><%= @x %> is <%= (@y && "") || "not " %>a palindrome.</p>
+  </div>
+</div>
